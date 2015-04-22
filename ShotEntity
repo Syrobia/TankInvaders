@@ -1,0 +1,57 @@
+//Created by Ammad Hashmi [Syrobia] www.syrobia.github.io
+//package com.github.syrobia.tankinvaders.shotentity;
+
+//bullet
+public class ShotEntity extends Entity {
+	//vertical speed
+	private double moveSpeed = -300;
+	//game of entity
+	private Game game;
+	// true of used (to be with collisions and such)
+	private boolean used = false;
+	
+	//create the bullet
+	public ShotEntity(Game game,String sprite,int x,int y) {
+		super(sprite,x,y);
+		
+		this.game = game;
+		
+		dy = moveSpeed;
+	}
+
+	//move based on time elapse
+	public void move(long delta) {
+		//proceed with normal move
+
+		super.move(delta);
+		
+		//if goes out of bounds, kill self
+
+		if (y < -100) {
+			game.removeEntity(this);
+		}
+	}
+	
+	//collisions
+	public void collidedWith(Entity other) {
+		//preventing double/triple/multi kills, remove entity when collided
+
+		if (used) {
+			return;
+		}
+		
+		//if collide with alien, kill it
+
+		if (other instanceof AlienEntity) {
+			// remove the affected entities
+
+			game.removeEntity(this);
+			game.removeEntity(other);
+			
+			// notify the game that the alien has been killed
+
+			game.notifyAlienKilled();
+			used = true;
+		}
+	}
+}
