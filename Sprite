@@ -1,0 +1,32 @@
+//Created by Ammad Hashmi [Syrobia] www.syrobia.github.io
+//package com.github.syrobia.tankinvaders.sprite;
+
+
+import java.awt.Graphics;
+import java.awt.Image;
+
+//sprite(allows us to use same image for multiple entities
+public class Sprite {
+	///the image
+	private Image image;
+	
+	//create sprite
+	public Sprite(Image image) {
+		this.image = image;
+	}
+	
+	//get width
+	public int getWidth() {
+		return image.getWidth(null);
+	}
+
+	//getheight
+	public int getHeight() {
+		return image.getHeight(null);
+	}
+	
+	//draw sprite
+	public void draw(Graphics g,int x,int y) {
+		g.drawImage(image,x,y,null);
+	}
+ }
