@@ -1,3 +1,5 @@
+//Created by Ammad Hashmi [Syrobia] www.syrobia.github.io
+//package com.github.syrobia.tankinvaders.game;
 
 import java.awt.Canvas;
 import java.awt.Color;
